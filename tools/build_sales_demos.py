@@ -6,7 +6,7 @@ DATA = {
     "claramunt": {
         "name": "Claramunt Food Service",
         "headline": "Unificar pedidos HORECA sin obligar al cliente a cambiar de canal",
-        "facts": ["Más de 900 productos publicados", "Pedidos por WhatsApp, email, EDI y otros sistemas", "Operativa de distribución alimentaria con múltiples formatos y referencias"],
+        "facts": ["Más de 900 productos publicados", "Pedidos por WhatsApp, email, EDI y otros sistemas", "Distribución de frutas, verduras y productos de 4ª y 5ª gama para profesionales HORECA"],
         "opportunity": "Concentrar entradas heterogéneas en un flujo controlado, resolver referencias y formatos, y derivar únicamente las excepciones al operador.",
         "scenario": ["Pedido sintético recibido por email o canal equivalente", "Identificación de cliente y líneas", "Matching de referencia y formato", "Bloqueo de ambigüedad o referencia desconocida", "Preentrada ERP simulada y trazabilidad"],
         "discovery": ["ERP y método real de integración", "Formato EDI utilizado y mensajes relevantes", "Política de referencias, formatos, sustituciones y mínimos", "Canal WhatsApp Business y consentimiento técnico", "Volumen diario, horarios de corte y gestión de urgencias"],
@@ -14,7 +14,7 @@ DATA = {
     "disalvi": {
         "name": "Disalvi",
         "headline": "Convertir llamadas, WhatsApp y email en pedidos estructurados y verificables",
-        "facts": ["Pedidos publicados por teléfono, WhatsApp y email", "1.800 referencias declaradas", "1.600 clientes declarados y operativa HORECA multisegmento"],
+        "facts": ["Pedidos publicados por teléfono, WhatsApp y email", "Catálogo de gran amplitud; la web publica cifras de 1.800+ referencias", "1.600 clientes declarados y operativa HORECA multisegmento"],
         "opportunity": "Normalizar pedidos con redacción y formatos distintos antes de que lleguen al sistema de gestión, manteniendo revisión humana cuando la confianza no sea suficiente.",
         "scenario": ["Pedido sintético procedente de email/WhatsApp o transcripción de llamada", "Normalización de cliente, producto y cantidad", "Cruce contra maestro de referencias", "Excepción humana cuando existe duda", "Preentrada simulada, idempotencia y auditoría"],
         "discovery": ["ERP actual y vías de importación disponibles", "Cómo se transcriben hoy los pedidos telefónicos", "Reglas comerciales y equivalencias de producto", "Catálogo maestro y códigos por cliente", "Volumen, picos horarios y excepciones frecuentes"],
@@ -22,7 +22,7 @@ DATA = {
     "cendis": {
         "name": "Cendis S.A.",
         "headline": "Controlar referencias y excepciones antes de que un pedido alcance el sistema de gestión",
-        "facts": ["Más de 1.000 referencias publicadas", "Más de 1.000 clientes en Madrid publicados", "Trazabilidad de lotes y caducidades destacada públicamente"],
+        "facts": ["Más de 1.000 referencias publicadas", "Más de un millar de clientes solo en la Comunidad de Madrid", "Trazabilidad de lotes y caducidades destacada públicamente"],
         "opportunity": "Reducir grabación manual y evitar que referencias, formatos o datos dudosos entren silenciosamente; conservar una evidencia auditable de cada decisión.",
         "scenario": ["Pedido sintético de restauración o colectividades", "Validación de referencia, formato y cantidad", "Detección de dato dudoso o no reconocido", "Resolución humana registrada", "Preentrada simulada, recovery y auditoría"],
         "discovery": ["ERP/WMS y responsabilidades entre sistemas", "Dónde se asignan lotes y caducidades", "Reglas de trazabilidad que deben preservarse", "Catálogo, presentaciones y unidades logísticas", "Controles actuales de duplicados, sustituciones e incidencias"],
@@ -43,7 +43,7 @@ def page(slug, d):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self' data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; connect-src 'none'; style-src 'self'; img-src 'self' data:; font-src 'self' data:; frame-src 'self'; object-src 'none'; media-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <title>OrderFlow · {name} — propuesta de automatización</title>
 <meta name="description" content="Demostración independiente de OrderFlow con un escenario sintético preparado para {name}.">
