@@ -49,8 +49,10 @@ for slug, name in sales.items():
     check("<script" not in text.lower(), f"{slug}: sales landing must contain zero scripts")
     check("<form" not in text.lower(), f"{slug}: sales landing must contain zero forms")
     check("location.replace" not in text, f"{slug}: redirect residue present")
-    check('loading="lazy"' in text, f"{slug}: demo iframe must lazy-load")
-    check('src="/"' in text and "<iframe" in text, f"{slug}: isolated engine iframe missing")
+    check("<iframe" not in text.lower(), f"{slug}: sales landing must not auto-load the engine iframe")
+    check("frame-src 'none'" in text, f"{slug}: CSP must prohibit frames")
+    check('src="/manual-assets/01-dashboard-960.webp"' in text, f"{slug}: local optimized product preview missing")
+    check('href="/"' in text and "Abrir demo interactiva" in text, f"{slug}: explicit engine CTA missing")
     check('rel="noopener noreferrer"' in text, f"{slug}: safe external-window rel missing")
     for directive in required_csp:
         check(directive in text, f"{slug}: CSP directive missing: {directive}")
