@@ -10,13 +10,3 @@ main .rounded-xl,main .p-6,main pre{min-width:0;max-width:100%}
 .of-guide h2{font-size:1rem;font-weight:700;margin:.25rem 0}.of-guide p{font-size:.875rem;line-height:1.5;color:var(--muted-foreground,#475569)}
 .of-guide-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}.of-guide button,.of-guide a{display:inline-flex;align-items:center;justify-content:center;border-radius:.4rem;padding:.48rem .75rem;font-size:.8rem;font-weight:600;border:1px solid var(--border,#cbd5e1);text-decoration:none;color:inherit;background:var(--background,#fff);cursor:pointer}.of-guide .of-primary{background:var(--primary,#1e3a5f);color:var(--primary-foreground,#fff);border-color:transparent}.of-guide-close{padding:.35rem .55rem!important}
 @media(max-width:480px){main{padding-left:1rem!important;padding-right:1rem!important}[role="tablist"]{display:flex!important;flex-wrap:nowrap!important;max-width:100%;overflow-x:auto;justify-content:flex-start;padding-bottom:3px}[role="tab"]{flex:0 0 auto}main pre{overflow-x:auto;white-space:pre;max-width:100%}main table{max-width:none}main .rounded-xl{width:100%}.of-guide{bottom:.6rem;width:calc(100vw - 1rem);max-height:55vh;overflow:auto}}
-
-/* Prospect-specific context layer: unbranded, synthetic and deliberately explicit about scope. */
-.of-prospect-context{border:1px solid hsl(var(--border));border-radius:.75rem;background:hsl(var(--card));padding:1.1rem 1.2rem;box-shadow:0 1px 2px rgb(0 0 0/.04)}
-.of-prospect-kicker{font-size:.72rem;line-height:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:hsl(var(--muted-foreground));margin-bottom:.7rem}
-.of-prospect-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:1rem}
-.of-prospect-grid strong{display:block;font-size:1rem;line-height:1.4rem;color:hsl(var(--foreground))}
-.of-prospect-grid p{margin:.25rem 0 0;font-size:.875rem;line-height:1.35rem;color:hsl(var(--muted-foreground))}
-.of-prospect-label{display:block;font-size:.72rem;line-height:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:hsl(var(--muted-foreground))}
-.of-prospect-boundary{margin-top:.9rem;border-top:1px solid hsl(var(--border));padding-top:.75rem;font-size:.78rem;line-height:1.25rem;color:hsl(var(--muted-foreground))}
-@media (max-width:767px){.of-prospect-grid{grid-template-columns:1fr}.of-prospect-context{padding:1rem}.of-prospect-boundary{font-size:.75rem}}
