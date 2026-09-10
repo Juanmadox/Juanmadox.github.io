@@ -1,0 +1,38 @@
+name: OrderFlow Static Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  static-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify generated sales demos are reproducible
+        run: |
+          python tools/build_sales_demos.py
+          git diff --exit-code -- demo/
+      - name: Static policy gate
+        run: python tools/qa_static.py
+      - name: Parse all JavaScript bundles
+        run: |
+          for file in assets/*.js; do node --check "$file"; done
+      - name: Verify release integrity manifest
+        run: |
+          python tools/build_release_manifest.py
+          git diff --exit-code -- release-manifest.sha256
