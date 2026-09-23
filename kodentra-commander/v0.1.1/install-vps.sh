@@ -16,7 +16,7 @@ need install
 mkdir -p "$STAGE/src" "$STAGE/deploy/systemd" "$STAGE/scripts"
 fetch(){ local url="$1" out="$2" sha="$3"; curl -fL --retry 3 --retry-delay 1 --connect-timeout 10 "$url" -o "$out"; echo "$sha  $out" | sha256sum -c -; }
 
-fetch "$BASE/v0.1.0/package.json" "$STAGE/package.json" "5dd8ea65793a0ebd7c0e11c2b28777728f7689a43fb7df3fcf283c461a51c921"
+fetch "$BASE/v0.1.0/package.json" "$STAGE/package.json" "967975043d2469e6506a515c43ee38e322e0e3e6c7eaacff8367bdc7529363a0"
 fetch "$BASE/v0.1.0/src/common.mjs" "$STAGE/src/common.mjs" "6f512c4a893a8b3b871ca1b0abbc5dfc7b3fe31fea9132dfda4e2b344b7227cb"
 fetch "$BASE/v0.1.0/src/relay-core.mjs" "$STAGE/src/relay-core.mjs" "ae08bce231e468f238d39a07358c6e4898d4e0e39aa117db95144ffdc64b014d"
 fetch "$BASE/v0.1.0/src/relay.mjs" "$STAGE/src/relay.mjs" "6582d997a81887070abea82048f890ee0736ca5b85bd7b59edaec469b586b9c9"
