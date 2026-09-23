@@ -41,6 +41,7 @@ export class StdioMcpSession {
   }
 
   request(body, timeoutMs = 120000) {
+    // A failed request must not poison the session queue forever.
     const run = this.chain.catch(() => undefined).then(() => this.#requestInner(body, timeoutMs));
     this.chain = run.catch(() => undefined);
     return run;
