@@ -21,6 +21,7 @@ need openssl
 need systemctl
 need tailscale
 need curl
+need ss
 [[ "$(id -un)" == "juanma" ]] || die "run this bootstrap as user juanma"
 node_major="$(node -p 'Number(process.versions.node.split(".")[0])')"
 (( node_major >= 20 )) || die "Node.js 20+ required; found $(node --version)"
@@ -51,6 +52,55 @@ else
   say "preserving existing ${relay_env}"
 fi
 chmod 0600 "$relay_env"
+
+# Preserve an existing configured port, but never steal a port owned by another service.
+configured_port="$(sed -n 's/^PORT=//p' "$relay_env" | tail -n1)"
+[[ -n "$configured_port" ]] && PORT="$configured_port"
+
+port_in_use() {
+  ss -H -ltn | awk -v p="$1" '$4 ~ (":" p "$") { found=1 } END { exit !found }'
+}
+
+if port_in_use "$PORT" && ! systemctl is-active --quiet "$RELAY_SERVICE" 2>/dev/null; then
+  old_port="$PORT"
+  selected=""
+  for candidate in 18787 28787 38787; do
+    if ! port_in_use "$candidate"; then
+      selected="$candidate"
+      break
+    fi
+  done
+  [[ -n "$selected" ]] || die "ports 18787, 28787 and 38787 are all occupied"
+  PORT="$selected"
+  python3 - "$relay_env" "$PORT" "$TAILSCALE_IP" <<'PY'
+from pathlib import Path
+import sys
+path = Path(sys.argv[1])
+port = sys.argv[2]
+host = sys.argv[3]
+out = []
+seen_port = False
+seen_host = False
+for line in path.read_text().splitlines():
+    if line.startswith("PORT="):
+        out.append(f"PORT={port}")
+        seen_port = True
+    elif line.startswith("HOST="):
+        out.append(f"HOST={host}")
+        seen_host = True
+    else:
+        out.append(line)
+if not seen_port:
+    out.insert(0, f"PORT={port}")
+if not seen_host:
+    out.insert(0, f"HOST={host}")
+tmp = path.with_name(path.name + ".tmp")
+tmp.write_text("\n".join(out) + "\n")
+tmp.chmod(0o600)
+tmp.replace(path)
+PY
+  say "port ${old_port} already belongs to another service; selected ${PORT}"
+fi
 
 vps_token="$(python3 - "$relay_env" <<'PY'
 import json,sys
