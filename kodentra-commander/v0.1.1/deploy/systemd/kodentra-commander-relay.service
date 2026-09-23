@@ -1,0 +1,21 @@
+[Unit]
+Description=Kodentra Commander MCP Relay
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=juanma
+WorkingDirectory=/home/juanma/projects/kodentra-commander
+EnvironmentFile=/home/juanma/.config/kodentra-commander/relay.env
+ExecStart=/usr/bin/node src/relay.mjs
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/juanma/projects/kodentra-commander
+
+[Install]
+WantedBy=multi-user.target
