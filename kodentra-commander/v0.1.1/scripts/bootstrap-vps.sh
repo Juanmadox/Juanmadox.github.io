@@ -106,7 +106,10 @@ vps_token="$(python3 - "$relay_env" <<'PY'
 import json,sys
 for line in open(sys.argv[1],encoding='utf-8'):
     if line.startswith('DEVICE_TOKENS_JSON='):
-        print(json.loads(line.split('=',1)[1].strip())['vps'])
+        raw = line.split('=',1)[1].strip()
+        if len(raw) >= 2 and raw[0] == raw[-1] and raw[0] in ("'", '"'):
+            raw = raw[1:-1]
+        print(json.loads(raw)['vps'])
         break
 else:
     raise SystemExit('DEVICE_TOKENS_JSON missing')
