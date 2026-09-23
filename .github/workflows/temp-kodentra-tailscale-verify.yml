@@ -16,3 +16,5 @@ jobs:
           bash -n kodentra-commander/v0.1.1/scripts/bootstrap-vps.sh
           grep -F 'RELAY_URL=http://${TAILSCALE_IP}:${PORT}' kodentra-commander/v0.1.1/scripts/bootstrap-vps.sh
           sha256sum kodentra-commander/v0.1.1/scripts/bootstrap-vps.sh
+
+# trigger
