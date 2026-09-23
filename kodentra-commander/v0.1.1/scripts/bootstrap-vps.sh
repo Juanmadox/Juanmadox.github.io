@@ -41,7 +41,7 @@ if [[ ! -f "$relay_env" ]]; then
 HOST=${TAILSCALE_IP}
 PORT=${PORT}
 MCP_ACCESS_TOKEN=${mcp_token}
-DEVICE_TOKENS_JSON={"pc1":"${pc1_token}","pc2":"${pc2_token}","vps":"${vps_token}"}
+DEVICE_TOKENS_JSON='{"pc1":"${pc1_token}","pc2":"${pc2_token}","vps":"${vps_token}"}'
 REQUEST_TIMEOUT_MS=120000
 POLL_TIMEOUT_MS=25000
 SESSION_TTL_MS=1800000
