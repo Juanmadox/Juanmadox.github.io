@@ -23,8 +23,8 @@ fetch "$BASE/v0.1.0/src/relay.mjs" "$STAGE/src/relay.mjs" "6582d997a81887070abea
 fetch "$BASE/v0.1.1/src/agent.mjs" "$STAGE/src/agent.mjs" "3814553934bf16a7e66f13e38c54b08db82a572648944ac801ef9751b1b9c678"
 fetch "$BASE/v0.1.1/src/stdio-session.mjs" "$STAGE/src/stdio-session.mjs" "177a2e294b694ca25417d1fc61c27b47df15b1a78488a8cbae5292f879d5ad8e"
 fetch "$BASE/v0.1.1/deploy/systemd/kodentra-commander-relay.service" "$STAGE/deploy/systemd/kodentra-commander-relay.service" "496eeb567bfd9c61eafa23e6a9d8cf8a42c18988390b6d83e7350fab8159263b"
-fetch "$BASE/v0.1.1/deploy/systemd/kodentra-commander-agent.service" "$STAGE/deploy/systemd/kodentra-commander-agent.service" "96057167cceabe7e6413f047ec65715abcccb433c8bce7462a4e45749f7451d0"
-fetch "$BASE/v0.1.1/scripts/bootstrap-vps.sh" "$STAGE/scripts/bootstrap-vps.sh" "59de2ead227c263227db020fc7b66543d76e9a3790de38cc16d7dc3221c1a4df"
+fetch "$BASE/v0.1.1/deploy/systemd/kodentra-commander-agent.service" "$STAGE/deploy/systemd/kodentra-commander-agent.service" "39471ecde86d4027708c0714e521201aee3f4d5452f8d221a761595b46d9802d"
+fetch "$BASE/v0.1.1/scripts/bootstrap-vps.sh" "$STAGE/scripts/bootstrap-vps.sh" "7fb0ff2a3e59a765519f8c1f1caa69c9b0110a83ea9482da591ce4406c485505"
 chmod +x "$STAGE/scripts/bootstrap-vps.sh"
 
 if [[ -e "$APP_DIR" ]]; then
