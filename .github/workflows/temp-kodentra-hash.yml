@@ -14,3 +14,5 @@ jobs:
         run: |
           set -euo pipefail
           sha256sum             kodentra-commander/v0.1.0/package.json             kodentra-commander/v0.1.0/src/common.mjs             kodentra-commander/v0.1.0/src/relay-core.mjs             kodentra-commander/v0.1.0/src/relay.mjs             kodentra-commander/v0.1.1/src/agent.mjs             kodentra-commander/v0.1.1/src/stdio-session.mjs             kodentra-commander/v0.1.1/deploy/systemd/kodentra-commander-relay.service             kodentra-commander/v0.1.1/deploy/systemd/kodentra-commander-agent.service             kodentra-commander/v0.1.1/scripts/bootstrap-vps.sh
+
+# trigger-2
