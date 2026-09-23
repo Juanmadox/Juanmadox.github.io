@@ -1,0 +1,17 @@
+[Unit]
+Description=Kodentra Commander Device Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=%h
+EnvironmentFile=%h/.config/kodentra-commander/agent.env
+ExecStart=/usr/bin/node /opt/kodentra-commander/src/agent.mjs
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
