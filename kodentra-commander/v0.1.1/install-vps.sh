@@ -24,7 +24,7 @@ fetch "$BASE/v0.1.1/src/agent.mjs" "$STAGE/src/agent.mjs" "3814553934bf16a7e66f1
 fetch "$BASE/v0.1.1/src/stdio-session.mjs" "$STAGE/src/stdio-session.mjs" "177a2e294b694ca25417d1fc61c27b47df15b1a78488a8cbae5292f879d5ad8e"
 fetch "$BASE/v0.1.1/deploy/systemd/kodentra-commander-relay.service" "$STAGE/deploy/systemd/kodentra-commander-relay.service" "496eeb567bfd9c61eafa23e6a9d8cf8a42c18988390b6d83e7350fab8159263b"
 fetch "$BASE/v0.1.1/deploy/systemd/kodentra-commander-agent.service" "$STAGE/deploy/systemd/kodentra-commander-agent.service" "39471ecde86d4027708c0714e521201aee3f4d5452f8d221a761595b46d9802d"
-fetch "$BASE/v0.1.1/scripts/bootstrap-vps.sh" "$STAGE/scripts/bootstrap-vps.sh" "81a211974958e1dda89f5befc785b8c59fc684cea5480de3e592d1308ed4506a"
+fetch "$BASE/v0.1.1/scripts/bootstrap-vps.sh" "$STAGE/scripts/bootstrap-vps.sh" "e8cea05b255d9b5b739edb7d9804e37d4eb4af93733e8d54549f784aea3f5474"
 chmod +x "$STAGE/scripts/bootstrap-vps.sh"
 
 if [[ -e "$APP_DIR" ]]; then
