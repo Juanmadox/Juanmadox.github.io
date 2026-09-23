@@ -118,7 +118,7 @@ PY
 agent_env="${CONFIG_DIR}/agent-vps.env"
 umask 077
 cat > "$agent_env" <<ENV
-RELAY_URL=http://127.0.0.1:${PORT}
+RELAY_URL=http://${TAILSCALE_IP}:${PORT}
 DEVICE_ID=vps
 DEVICE_TOKEN=${vps_token}
 POLLERS=2
