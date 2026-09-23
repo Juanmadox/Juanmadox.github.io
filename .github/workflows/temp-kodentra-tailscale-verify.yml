@@ -1,0 +1,18 @@
+name: Temporary Kodentra tailscale verify
+on:
+  push:
+    paths:
+      - ".github/workflows/temp-kodentra-tailscale-verify.yml"
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify bootstrap
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash -n kodentra-commander/v0.1.1/scripts/bootstrap-vps.sh
+          grep -F 'RELAY_URL=http://${TAILSCALE_IP}:${PORT}' kodentra-commander/v0.1.1/scripts/bootstrap-vps.sh
+          sha256sum kodentra-commander/v0.1.1/scripts/bootstrap-vps.sh
