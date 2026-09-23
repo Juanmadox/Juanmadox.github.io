@@ -1,0 +1,13 @@
+{
+  "name": "kodentra-commander",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Self-hosted, quota-free remote MCP relay for Desktop Commander-compatible local MCP servers.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "relay": "node src/relay.mjs",
+    "agent": "node src/agent.mjs"
+  },
+  "license": "MIT"
+}
