@@ -1,0 +1,30 @@
+name: Temporary Kodentra parser verify
+on:
+  push:
+    paths:
+      - ".github/workflows/temp-kodentra-parser-verify.yml"
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash -n kodentra-commander/v0.1.1/scripts/bootstrap-vps.sh
+          sha256sum kodentra-commander/v0.1.1/scripts/bootstrap-vps.sh
+          python3 - <<'PY'
+          import json
+          for raw in [
+              '{"vps":"abc"}',
+              '\'{"vps":"abc"}\'',
+              '"{\"vps\":\"abc\"}"',
+          ]:
+              s=raw.strip()
+              if len(s)>=2 and s[0]==s[-1] and s[0] in ("'", '"'):
+                  s=s[1:-1]
+              assert json.loads(s)["vps"]=="abc"
+          print("PARSER_PASS")
+          PY
